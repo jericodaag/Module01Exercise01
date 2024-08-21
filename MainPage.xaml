@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Module01Exercise01"
+             x:Class="Module01Exercise01.MainPage"
+             BackgroundColor="{DynamicResource LocalBackgroundColor}">
+
+    <ContentPage.Resources>
+        <Color x:Key="StaticButtonColor">#0078D4</Color>
+        <Color x:Key="StaticTextColor">#000000</Color>
+
+        <Color x:Key="ButtonColor">#0078D4</Color>
+        <Color x:Key="LocalBackgroundColor">White</Color>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+           
+            <Label Text="Full Name" TextColor="{StaticResource StaticTextColor}" />
+            <Entry x:Name="MyName"
+                   Placeholder="Enter your Name..."
+                   Text="{Binding Name}" />
+
+            <Label Text="Email Address" TextColor="{StaticResource StaticTextColor}" />
+            <Entry x:Name="MyEmail"
+                   Placeholder="Enter your Email..."
+                   Text="{Binding Email}" />
+
+            <Label Text="Birthday" TextColor="{StaticResource StaticTextColor}" />
+            <DatePicker MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding DateOfBirth}" />
+
+            <Label Text="Bio" TextColor="{StaticResource StaticTextColor}" />
+            <Editor x:Name="BioEditor"
+                    Placeholder="Enter a short bio"
+                    Text="{Binding Bio}"
+                    TextChanged="OnEditorTextChanged"
+                    Completed="OnEditorCompleted" />
+
+            <Button Text="Save Changes"
+                    BackgroundColor="{DynamicResource ButtonColor}"
+                    TextColor="White"
+                    Clicked="OnSaveButtonClicked" />
+
+            <Label x:Name="ConfirmationLabel"
+                   Text="{Binding ConfirmationText}"
+                   IsVisible="{Binding IsConfirmationVisible}" />
+
+            <Label Text="{local:CurrentDateExtension}"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
